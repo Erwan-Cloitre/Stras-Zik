@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AMOURE {% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap" rel="stylesheet">
+    {% block stylesheet %}{% endblock %}
+    <link rel="icon" href="/assets/images/favicon.png">
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+<div id="menu-bar">
+    <div id="menu" onclick="onClickMenu()">
+        <div id="bar1" class="bar"></div>
+        <div id="bar2" class="bar"></div>
+        <div id="bar3" class="bar"></div>
+    </div>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/#"><img src="/assets/images/logo.png" alt="logo Amoure"/></a>
+
+        <div class="social-media collapse navbar-collapse">
+            <ul class="navbar-nav m-l" id="nav">
+                <li class="picto-menu nav-item">
+                    <a href="https://www.facebook.com/amouremusic/"><img src="/assets/images/icons8-facebook-50.png" alt="Facebook"/></a>
+                </li>
+                <li class="picto-menu nav-item">
+                    <a href="https://www.instagram.com/amouremusic/"><img src="/assets/images/icons8-instagram-50.png" alt="Instagram"/></a>
+                </li>
+                <li class="picto-menu nav-item">
+                    <a href="https://open.spotify.com/artist/5q8R9nh6p2UmgIo45lZnCk"><img src="/assets/images/icons8-spotify-50.png" alt="Spotify"/></a>
+                </li>
+                <li class="picto-menu nav-item">
+                    <a href="https://www.youtube.com/channel/UCOlu9xo2WyfQHWguasPknwg"><img src="/assets/images/icons8-youtube-50.png" alt="Youtube"/></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu collapse navbar-collapse">
+            <ul class="navbar-nav m-l" id="nav2">
+
+                <li class="btn-menu nav-item">
+                    <a class="nav-link" href="/event/list">Concerts</a>
+                </li>
+
+                <li class="btn-menu nav-item">
+                    <a class="nav-link" href="/news/list">Actu</a>
+                </li>
+
+                <li class="btn-menu nav-item">
+                    <a class="nav-link" href="/shop/list">Boutique</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="profil collapse navbar-collapse">
+            <ul class="navbar-nav m-l" id="nav3">
+
+                {% if session is null %}
+                    <li class="btn-profil nav-item"><a href="/login/connection">Login</a></li>
+                {% else %}
+                    <li class="btn-profil nav-item"><a href="/login/logout">Logout</a></li>
+                    <li class="picto-profil picto-user nav-item">
+                           <a href="/user/account"><img src="/assets/images/icons8-user-24.png" alt="Mon panier"/></a>
+                    </li>
+                    <li class="picto-profil nav-item">
+                        <a href="/cart/listcart"><img src="/assets/images/icons8-basket-24.png" alt="Mon panier"/></a>
+                    </li>
+                {% endif %}
+                </ul>
+            </div>
+        </nav>
+</header>
+</div>
+<div class="menu-bg" id="menu-bg"></div>
+
+
+{% block content %}
+
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+<footer>
+    <ul class="list-inline">
+        <li class="list-inline-item">
+            <a href="#">Retour accueil</a>
+        </li>
+        <li class="list-inline-item">
+            <a href="/footer/conditions">Mentions légales</a>
+        </li>
+        <li class="list-inline-item">
+            <a href="#">Contact</a>
+        </li>
+        <li class="list-inline-item">
+            <a href="/adminlogin/connection">Espace administrateur</a>
+        </li>
+    </ul>
+    <p class="copyright">Site réalisé pour StrasZik - 2020 </p>
+</footer>
+<script>
+    function onClickMenu()
+    {
+        document.getElementById("menu").classList.toggle("change");
+        document.getElementById("nav").classList.toggle("change");
+        document.getElementById("nav2").classList.toggle("change");
+        document.getElementById("nav3").classList.toggle("change");
+        document.getElementById("menu-bg").classList.toggle("change-bg");
+    }
+
+    function maskmessage()
+    {
+        document.getElementById("cart-message").innerHTML="";;
+    }
+    window.setTimeout(maskmessage, 2000);
+
+</script>
+</body>
+</html>

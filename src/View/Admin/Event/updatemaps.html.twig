@@ -1,0 +1,38 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} La map des concerts{% endblock %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <div class="maps-update">
+                <h2>1. Modifier la map
+                    <a href="https://www.google.com/maps/d/edit?mid=1v62HvdLE1r9jIozK89WpqLH-ogJvhuCb&usp=sharing">par ici</a><br>
+                    2. Trouver l'iframe de cette nouvelle map <br> en suivant le tuto image : <br>
+                    <img class="image-tuto" src="/assets/images/tuto_maps.png" alt="Un peu d'aide pour retrouver ton chemin"/><br>
+                    3. Ajouter cet iframe dans le champ ci-dessous :
+                    <form action="/adminvideo/processupdatemaps">
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Par là"
+                                   name="url"
+                                   required
+                            >
+                            <button type="submit" class="btn-submit btn">Enregistrer la nouvelle carte</button>
+                            <div class="btn-back-event">
+                                <a class="btn" href="/adminevent/listevents">Retourner aux événements</a>
+                            </div>
+                        </div>
+                    </form>
+                </h2>
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

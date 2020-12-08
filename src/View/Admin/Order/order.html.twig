@@ -1,0 +1,59 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Modifier un album {% endblock %}
+
+{% block content %}
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>La commande en détail</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix unitaire</th>
+                    <th scope="col">Sous-total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <th scope="row">{{ item.title }}</th>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.total_row }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+            <h2>Les informations client</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nom & prénom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Adresse de livraison</th>
+                    <th scope="col">Numéro</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ user.firstname }} {{ user.lastname }}</th>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.adress }} {{ user.postal }} {{ user.city }}</td>
+                        <td>{{ user.number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

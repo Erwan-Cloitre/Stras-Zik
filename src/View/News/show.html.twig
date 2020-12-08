@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} - Les news{% endblock %}
+
+{% block content %}
+
+    <div class="new container-fluid">
+        <div class="news-form">
+            <h1>Pour ne louper<br>aucune actu, abonne<br>toi à la newsletter</h1>
+            {% include 'News/add.html.twig' %}
+            <img class="img-news" src="../../assets/images/amoure-vintage.jpg" alt="Amoure entre en scène"/>
+        </div>
+        <h1 class="last-news">Nos dernières<br>nouveautés</h1>
+        <div class="all-news row">
+            {% for new in news %}
+                <div class="news card col-lg-7 col-7">
+                    <div class="row">
+                        <div class="img-actu col-lg-4">
+                            <img src="../assets/images/{{ new.img_path }}" class="card-img-top" alt="Image d'actualité">
+                        </div>
+                        <div class="text-news col-lg-6 col-12">
+                            <h4 class="card-news-title">{{ new.title }}</h4>
+                            <p class="card-news-description">{{ new.description }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

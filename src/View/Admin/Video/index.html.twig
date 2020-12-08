@@ -1,0 +1,48 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %}Video youtube{% endblock %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>Les videos de la home page</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Lien d'intégration</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for video in videos %}
+                    <tr>
+                        <td>{{ video.title }}</td>
+                        <td>{{ video.url }}</td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminevent/updateevent/{{ video.id }}">Modifier</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminevent/deleteevent/{{ video.id }}">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="btn-add-event">
+                <a class="btn" href="/adminvideo/createvideo/">Ajouter une nouvelle video</a>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

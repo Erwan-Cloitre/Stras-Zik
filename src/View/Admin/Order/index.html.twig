@@ -1,0 +1,49 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>Les commandes réalisées</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Date de validation</th>
+                    <th scope="col">Nom client.e</th>
+                    <th scope="col">Nombre d'article total</th>
+                    <th scope="col">Sous total</th>
+                    <th scope="col">Frais de transport</th>
+                    <th scope="col">Prix total</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <th scope="row">{{ order.date }}</th>
+                        <td>{{ order.firstname }} {{ order.lastname }}</td>
+                        <td>{{ order.quantity_items }}</td>
+                        <td>{{ order.subtotal }} €</td>
+                        <td>{{ order.shipping_fee }} €</td>
+                        <td>{{ order.total }} €</td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminorder/orderdetails/{{ order.id }}">Voir le détail</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminorder/#/{{ order.id }}">Commande traitée</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Ajouter un EP {% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="form-event col-4 offset-4">
+
+            <h2>Complète ce formulaire pour ajouter un disque à ta page d'accueil</h2>
+            <form action="/admindisco/processDiscoCreation"
+                  method="POST"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Nom </label>
+                    <input type="text"
+                           class="form-control"
+                           name="name"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="url">URL Spotify pour l'écouter</label>
+                    <input type="text"
+                           class="form-control"
+                           name="url"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                <label for="imageUpload">Ajoute l'image de l'album</label>
+                    <input type="file" name="image" multiple="multiple" />
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                </div>
+
+                <button type="submit" class="btn-submit btn">Enregistrer la nouvelle sortie</button>
+
+                <div class="btn-back-event">
+                    <a class="btn" href="/admindisco/listdisco">Retourner aux autres titres</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

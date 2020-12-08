@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} - Les concerts{% endblock %}
+
+{% block content %}
+
+    <div class="event container-fluid">
+        <div class="event-title">
+            <h1>Retrouve nous sur scène</h1>
+        </div>
+        <div class="all-events row">
+        {% for event in events %}
+            <div class="events card col-lg-7 col-11">
+                <div class="row">
+                    <div class="date col-lg-4 col-6">
+                        <h3> {{ event.booking_date | date("M")}} <br/> <span>{{ event.booking_date  | date ("d")}}</span></h3>
+                    </div>
+                    <div class="text-event col-lg-6 col-12">
+                        <h4 class="card-event-title">{{ event.title }}</h4>
+                        <p class="card-event-seat">{{ event.number_seat }} places</p>
+                        <p class="card-event-location"> {{ event.location }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        </div>
+
+        <div class="maps col-12">
+            <h1> La carte des concerts </h1>
+            {% for map in maps %}
+                {{ map.url | raw}}
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

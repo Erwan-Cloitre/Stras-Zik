@@ -1,0 +1,47 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Modifier un concert {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="form-event col-4 offset-4">
+
+            <h2>Complète ce formulaire pour modifier un concert à ton agenda</h2>
+            <form action="/adminevent/processEventUpdate" method="POST" >
+
+                <div class="form-group">
+                    <label for="date">Date du concert </label>
+                    <input type="date"
+                           class="form-control"
+                           name="date"
+                           value="{{event.booking_date}}"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="title">Nom du concert</label>
+                    <input type="text"
+                           class="form-control"
+                           name="title"
+                           value="{{ event.title }}" >
+                </div>
+                <div class="form-group">
+                    <label for="location">Lieu (salle - ville)</label>
+                    <input type="text"
+                           class="form-control"
+                           name="location"
+                           value="{{ event.location }}" >
+                </div>
+                <div class="form-group">
+                    <label for="seats">Nombre de place en vente</label>
+                    <input type="number"
+                           class="form-control"
+                           name="seats"
+                           value="{{ event.number_seat }}" >
+                </div>
+                <input type="hidden" name="event-id" value="{{ event.id }}">
+                <button type="submit" class="btn-submit btn">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

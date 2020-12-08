@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} - La boutique{% endblock %}
+
+{% block content %}
+    <div class="products container-fluid">
+        <div class="product-title">
+            <h1>La boutique</h1>
+            {% if session is null %}
+                <h2>Connecte toi à ton compte utilisateur pour ajouter des produits à ton panier</h2>
+            {% endif %}
+            <div id="cart-message" class="alert-success">
+                {% if message %}
+                    {{ message.message }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="all-products row d-flex">
+            {% for product in products %}
+                <div class="product card col-7 col-sm-4 col-md-4">
+                    <div class="row">
+                        <div class="product-image">
+                            <img src="../assets/images/{{ product.img_path }}" alt="Aperçu du produit"/>
+                        </div>
+                        <div class="product-text">
+                            <h4 class="card-product-title">{{ product.title }}</h4>
+                            <p class="card-product-description">{{ product.description }}</p>
+                            <div class="card-product-price">
+                                {{ product.price }}€
+                                {% if session is not null %}
+                                    <a class="btn" href="/cart/addproduct/{{ product.id }}">
+                                        <img src="../assets/images/icons8-buy-24.png" alt="Ajouter au panier"/>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

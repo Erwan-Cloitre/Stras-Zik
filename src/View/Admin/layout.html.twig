@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Espace Adminstateur{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto&display=swap" rel="stylesheet">
+    {% block stylesheet %}{% endblock %}
+    <link rel="icon" href="/assets/images/icons8-gear-50.png">
+</head>
+
+<header>
+    <div class="menu-admin">
+        <ul>
+            <li>
+                <a class="active" href="/admin/list">
+                    Mes accès
+                </a>
+            </li>
+            <li>
+                <a href="/adminvideo/listvideo">
+                    <div class="picto-admin"><img src="/assets/images/icons8-circled-play-64.png" alt="Vidéos"/></div>
+                    <div class="admin-onglet">Vidéos</div>
+                </a>
+            </li>
+            <li>
+                <a href="/admindisco/listdisco">
+                    <div class="picto-admin"><img src="/assets/images/icons8-music-record-64.png" alt="Discographie"/></div>
+                    <div class="admin-onglet">Discographie</div>
+                </a>
+            </li>
+            <li>
+                <a href="/adminevent/listevents">
+                    <div class="picto-admin"><img src="/assets/images/icons8-curtains-64.png" alt="Les concerts"/></div>
+                    <div class="admin-onglet">Agenda des concerts</div>
+                </a>
+            </li>
+            <li>
+                <a href="/news/listnews">
+                    <div class="picto-admin"><img src="/assets/images/icons8-news-80.png" alt="L'actualité"/></div>
+                    <div class="admin-onglet">Actualités du groupe</div>
+                </a>
+            </li>
+            <li>
+                <a href="/adminshop/listshop">
+                    <div class="picto-admin"><img src="/assets/images/icons8-shop-two-80.png" alt="La boutique"/></div>
+                    <div class="admin-onglet">Catalogue boutique</div>
+                </a>
+            </li>
+            <li>
+                <a href="/adminorder/list">
+                    <div class="picto-admin"><img src="/assets/images/icons8-box-64.png" alt="Les commandes"/></div>
+                    <div class="admin-onglet">Commandes passées</div>
+                </a>
+            </li>
+            <li>
+                <a href="/adminlogin/logout">
+                    <div class="picto-admin"><img src="/assets/images/icons8-exit-50.png" alt="Exit"/></div>
+                    <div class="admin-onglet">Deconnexion & retour au site</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<body>
+
+{% block content %}
+
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+<footer>
+    <p class="copyright">Site réalisé pour StrasZik - 2020 </p>
+</footer>
+</body>
+</html>

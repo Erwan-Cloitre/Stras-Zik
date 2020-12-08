@@ -1,0 +1,92 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Ajouter un utilisateur {% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="form-event col-4 offset-4">
+
+          <h2> Ajoute tes coordonnées pour te joindre à notre univers ! </h2>
+
+
+            <form method="post" action="/form/add">
+                <div class="form-group">
+                    <label for="">Nom : </label>
+                    <input type="text"
+                           class="form-control"
+                           name="lastname"
+                           id="lastname" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Prénom : </label>
+                    <input type="text"
+                           class="form-control"
+                           name="firstname"
+                           id="firstname" required/>
+
+                </div>
+
+               <div class="form-group">
+                 <label for="">Identifiant : </label>
+                <input type="text"
+                       class="form-control"
+                       name="login"
+                       id="login" required/>
+               </div>
+
+               <div class="form-group">
+                 <label for="">Mot de passe : </label>
+                <input type="password"
+                       class="form-control"
+                       name="password"
+                       id="password" required/>
+               </div>
+
+               <div class="form-group">
+                 <label for="">E-mail : </label>
+                <input type="email"
+                       class="form-control"
+                       name="email"
+                       id="email" required/>
+               </div>
+
+               <div class="form-group">
+                 <label for="">Numéro de voie : </label>
+                <input type="number"
+                       class="form-control"
+                       name="number"
+                       id="number" required/>
+               </div>
+
+               <div class="form-group">
+                 <label for="">Nom de la Rue : </label>
+                <input type="text"
+                     class="form-control"
+                     name="address"
+                     id="address" required/>
+               </div>
+
+               <div class="form-group">
+                 <label for="">Code postal : </label>
+                <input type="text"
+                     class="form-control"
+                     name="postal"
+                     id="postal" required/>
+               </div>
+
+               <div class="form-group">
+                 <label for="">Ville : </label>
+                <input type="text"
+                     class="form-control"
+                     name="city"
+                     id="city" required/>
+               </div>
+
+               <input type="submit" class="btn-submit btn" value="S'inscrire"/>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

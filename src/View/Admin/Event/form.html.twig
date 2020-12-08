@@ -1,0 +1,54 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Ajouter un concert {% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="form-event col-4 offset-4">
+
+            <h2>Complète ce formulaire pour ajouter un concert à ton agenda</h2>
+            <form action="/adminevent/processEventCreation"
+                  method="POST" >
+                <div class="form-group">
+                    <label for="date">Date du concert </label>
+                    <input type="date"
+                           class="form-control"
+                           name="date"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="title">Nom du concert</label>
+                    <input type="text"
+                           class="form-control"
+                           name="title"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="location">Lieu (salle - ville)</label>
+                    <input type="text"
+                           class="form-control"
+                           name="location"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="seats">Nombre de place en vente</label>
+                    <input type="number"
+                           class="form-control"
+                           name="seats"
+                           required
+                    >
+                </div>
+                <button type="submit" class="btn-submit btn">Enregistrer l'événement</button>
+
+                <div class="btn-back-event">
+                    <a class="btn" href="/adminevent/listevents">Retourner aux événements</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

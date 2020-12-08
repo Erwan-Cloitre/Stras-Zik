@@ -1,0 +1,58 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Les news {% endblock %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>L'actualité actuelle</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Nombre de likes</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for new in news %}
+                    <tr>
+                        <td><img src="../assets/images/{{new.img_path}}" class="card-img-ap" alt="Aperçu de l'actualité"></td>
+                        <td>{{ new.title }}</td>
+                        <td>{{ new.description }}</td>
+                        <td>{{ new.like }}</td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/news/updatenews/{{ new.id }}">Modifier</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/news/deletenews/{{ new.id }}">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="btn-add-event">
+                <a class="btn" href="/news/createnews/">Ajouter une news</a>
+            </div>
+
+            <div class="newsletter-btn">
+                <div class="btn-add-event">
+                    <a class="btn" href="/news/newsletter/">Récupérer les mails pour newsletter</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

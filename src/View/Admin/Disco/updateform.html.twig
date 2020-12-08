@@ -1,0 +1,36 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Modifier un album {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="form-event col-4 offset-4">
+            <h2>Complète ce formulaire pour modifier l'album de la discographie</h2>
+            <form action="/admindisco/processDiscoUpdate" method="POST" >
+                <div class="form-group">
+                    <label for="name">Nom de l'album</label>
+                    <input type="text"
+                           class="form-control"
+                           name="name"
+                           value="{{ disk.name }}" >
+                </div>
+                <div class="form-group">
+                    <label for="url">URL Spotify pour écoute</label>
+                    <input type="text"
+                           class="form-control"
+                           name="url"
+                           value="{{ disk.url }}" >
+                </div>
+                <div class="form-group">
+                    <label for="imageUpload">Modifie l'image de l'album</label>
+                    <input type="file" name="image" multiple="multiple" />
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                </div>
+                <input type="hidden" name="disk-id" value="{{ disk.id }}">
+                <input type="hidden" name="image_path" value="{{ disk.img_path }}">
+                <button type="submit" class="btn btn-submit">Enregister les modifications</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

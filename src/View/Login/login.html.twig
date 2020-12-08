@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row login-page">
+        <div class="form-login-contain col-6 offset-2 offset-lg-3">
+            {% if error is not empty %}
+            <div class="alert alert-{{ error.class }}">
+                {{ error.message }}
+            </div>
+            {% endif %}
+            <h2>Accède à ton espace</h2>
+            <form class="form-login col-6 offset-3" method="post">
+                <input type="text" name="username" placeholder="Ton identifiant"><br>
+                <input type="password" name="password" placeholder="Ton mot de passe"><br>
+                <button type="submit" name=submit class="btn-submit btn">Connection</button>
+            </form>
+            <h2>Pas encore de compte ?</h2>
+                <a href="/form/index">
+                    <button type="submit" name=submit class="btn-submit btn btn-form">
+                        C'est par ici
+                    </button>
+                </a>
+        </div>
+    </div>
+
+
+{% endblock %}

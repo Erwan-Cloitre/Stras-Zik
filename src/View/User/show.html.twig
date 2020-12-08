@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} - Ton compte{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="user-contain col-6 offset-3">
+
+            <h1>Bonjour {{ user.username }} ! <br/> bienvenue sur ton espace utilisateur</h1>
+
+            <h2>Tes données personnelles : </h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="title-td">Ton nom</td>
+                        <td>{{ user.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <td class="title-td">Ton prénom</td>
+                        <td>{{ user.firstname }}</td>
+                    </tr>
+                    <tr>
+                        <td class="title-td">Ton identifiant</td>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td class="title-td">Ton adresse mail</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td class="title-td">Ton adresse</td>
+                        <td>{{ user.adress }}{{ user.postal }}{{ user.city }}</td>
+                    </tr>
+                    <tr>
+                        <td class="title-td">Ton numéro de téléphone</td>
+                        <td>{{ user.number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="/user/edit/{{ user.id }}">
+                <button type="submit" name=submit class="btn-submit btn">
+                    Modifier une donnée de mon compte
+                </button>
+            </a>
+            <a href="/user/delete{{user.id}}">
+                <button type="submit" name=submit class="btn-submit btn">
+                    Supprimer mon compte utilisateur
+                </button>
+            </a>
+
+        </div>
+    </div>
+{% endblock %}

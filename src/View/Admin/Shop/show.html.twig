@@ -1,0 +1,51 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>catalogue boutique</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nom du produit</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Aperçu produit</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ product.title }}</th>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.price }} €</td>
+
+                        <td><img src="../assets/images/{{product.img_path}}" class="card-img-ap" alt="Aperçu du produit"></td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminshop/updateshop/{{ product.id }}">Modifier</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminshop/deleteproduct/{{ product.id }}">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="btn-add-event">
+                <a class="btn" href="/adminshop/createproduct/">Ajouter un nouveau produit</a>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

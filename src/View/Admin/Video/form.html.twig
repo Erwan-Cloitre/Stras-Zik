@@ -1,0 +1,39 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Ajouter un concert {% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="form-event col-4 offset-4">
+
+            <h2>Complète ce formulaire pour une nouvelles vidéo à ta home page</h2>
+            <form action="/adminvideo/processVideoCreation"
+                  method="POST" >
+                <div class="form-group">
+                    <label for="title">Titre de la vidéo Youtube</label>
+                    <input type="text"
+                           class="form-control"
+                           name="title"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="url">Lien d'intégration</label>
+                    <input type="text"
+                           class="form-control"
+                           name="url"
+                           required
+                    >
+                </div>
+
+                <button type="submit" class="btn-submit btn">Enregistrer la vidéo</button>
+
+                <div class="btn-back-event">
+                    <a class="btn" href="/adminevent/listevents">Retourner aux vidéos</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

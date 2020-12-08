@@ -1,0 +1,60 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Modifier un produit {% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="form-event col-4 offset-4">
+
+            <h2>Complète ce formulaire pour modifier un produit à la boutique</h2>
+            <form action="/adminshop/processProductUpdate"
+
+                  method="POST"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Nom </label>
+                    <input type="text"
+                           class="form-control"
+                           name="title"
+                           value="{{product.title}}"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="description">Description de l'article</label>
+                    <input type="text"
+                           class="form-control"
+                           name="description"
+                           value="{{product.description}}"
+                           required
+                    >
+                </div>
+                 <div class="form-group">
+                    <label for="price">Prix de l'article</label>
+                    <input type="number"
+                           class="form-control"
+                           name="price"
+                           value="{{product.price}}"
+                           required
+                    >
+                </div>
+                <div class="form-group">
+                <label for="imageUpload">Ajoute l'image du produit</label>
+                    <input type="file" name="image" multiple="multiple" />
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+                </div>
+                <input type="hidden" name="product-id" value="{{product.id}}">
+                <input type="hidden" name="image_path" value="{{product.image_path}}">
+
+
+                <button type="submit" class="btn-submit btn">Enregistrer les modifications</button>
+
+                <div class="btn-back-event">
+                    <a class="btn" href="/adminshop/listshop">Retourner aux autres produits</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>Les disques déjà enregistrés</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nom de l'album</th>
+                    <th scope="col">Adresse URL de l'écoute</th>
+                    <th scope="col">Aperçu image</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for disk in disks %}
+                    <tr>
+                        <th scope="row">{{ disk.name }}</th>
+                        <td>{{ disk.url }}</td>
+                        <td><img src="../assets/images/{{disk.img_path}}" class="card-img-ap" alt="Aperçu de la pochette"></td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/admindisco/updatedisco/{{ disk.id }}">Modifier</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/admindisco/deletedisco/{{ disk.id }}">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="btn-add-event">
+                <a class="btn" href="/admindisco/createdisco/">Ajouter un nouveau titre</a>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

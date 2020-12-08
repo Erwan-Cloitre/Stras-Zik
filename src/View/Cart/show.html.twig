@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} - Ton panier{% endblock %}
+
+{% block content %}
+
+    <div class="products container-fluid">
+        <div class="cart-title row">
+            <h1>Ton panier</h1>
+        </div>
+        <div class="cart row">
+            <div class="products-cart col-8">
+                {% if productsData is not empty %}
+                    <h2>Contenu de ton panier </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Aperçu</th>
+                                <th scope="col">Nom du produit</th>
+                                <th scope="col">Prix unitaire</th>
+                                <th scope="col">Quantité sélectionnée</th>
+                                <th scope="col">Sous-total</th>
+                                <th scope="col">Modifier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for product in productsData.products %}
+                        <form
+                                method="post"
+                                action="/cart/saveCart">
+                            <tr>
+                                <td>
+                                    <img src="../assets/images/{{product.image}}" class="card-img-ap" alt="Aperçu du produit">
+                                </td>
+                                <td>{{ product.title }}</td>
+                                    <input type="hidden" value="{{ product.title }}" name="cart[{{ product.id }}][title]">
+                                <td>{{ product.price }} €</td>
+                                    <input type="hidden" value="{{ product.price }}" name="cart[{{ product.id }}][price]">
+                                <td>{{ product.quantity }}</td>
+                                    <input type="hidden" value="{{ product.quantity }}" name="cart[{{ product.id }}][quantity]">
+                                <td>{{ product.total_row }} €</td>
+                                    <input type="hidden" value="{{ product.total_row }}" name="cart[{{ product.id }}][total_row]">
+                                <td>
+                                    <input type="hidden" value="{{ product.id }}" name="cart[{{ product.id }}][product_id]">
+                                    <div class="btn-event">
+                                        <a class="btn" href="/cart/deleteproductscart/{{ product.id }}">Supprimer du panier</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+                    <div class="total-cart col-2">
+                        <h2>Total </h2>
+                        <h3>Sous total :</h3>
+                        <p> {{ productsData.total }} € </p>
+                            <input type="hidden" value="{{ productsData.total }}" name="subtotal">
+                        <h3>Livraison France Metropolitiaine :</h3>
+                        <p>6.99€</p>
+                            <input type="hidden" value="6.99" name="shipping_fee">
+                        <h3>Total commande :</h3>
+                        <h2>{{ productsData.total+6.99 }} €</h2>
+                            <input type="hidden" value="{{ productsData.total+6.99 }}" name="total">
+
+                        <button type="submit" class="btn-submit btn">Valider cette commande <br> Procéder au paiement</button>
+                    </div>
+
+                    </form>
+                {% else %}
+                    <h2> Ton panier est actuellement vide, n'hésite pas à faire un tour dans la boutique </h2>
+                {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

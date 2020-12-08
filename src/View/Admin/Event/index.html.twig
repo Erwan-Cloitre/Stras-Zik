@@ -1,0 +1,72 @@
+{% extends 'Admin/layout.html.twig' %}
+
+{% block title %} Les concerts{% endblock %}
+
+{% block content %}
+
+    <div class="admin-all-events row">
+        <div class="admin-list col-8 offset-2">
+
+            <h2>Les dates déjà enregistrées</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Nom du concert</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">Nombre de sièges</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <th scope="row">{{ event.booking_date | date("d F Y")}}</th>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>{{ event.number_seat }}</td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminevent/updateevent/{{ event.id }}">Modifier</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-event">
+                                <a class="btn" href="/adminevent/deleteevent/{{ event.id }}">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="btn-add-event">
+                <a class="btn" href="/adminevent/createevent/">Ajouter un événement</a>
+            </div>
+
+            <div>
+
+                <div class="row">
+                    <div class="maps col-12">
+                        <h2>Aperçu de la carte des concerts</h2>
+
+                        {% for map in maps %}
+                            {{ map.url | raw}}
+                        {% endfor %}
+
+                        <div class="btn-add-event col-2 mt-5">
+                            <a class="btn" href="/adminevent/updatemaps/">Modifier la carte</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
